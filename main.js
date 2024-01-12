@@ -39,14 +39,14 @@ document.getElementById("logout_button").addEventListener("click", function(){
 
     if (token) {
         Swal.fire({
-            title: '정말로 로그아웃 하시겠습니까?',
-            text: '다시 되돌릴 수 없습니다. 신중하세요.',
-            icon: 'warning',
+            title: 'Station Logout',
+            text: '로그아웃을 희망하시면 "네"를 클릭하세요',
+            icon: 'success',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: '로그아웃',
-            cancelButtonText: '취소',
+            confirmButtonText: '네',
+            cancelButtonText: '아니요',
             reverseButtons: true,
         }).then((result) => {
             if (result.isConfirmed) {

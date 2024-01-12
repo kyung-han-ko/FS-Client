@@ -2,8 +2,33 @@
     <head>
         <script defer src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
         <script defer src="calendar.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+        <link rel="stylesheet" href="calendar.css">
     </head>
     <body>
+        <div id="goback_button">
+        <a href="main.html"><input type="button" value="Go Back to Station"></a>
+        </div>
         <div id='calendar'></div>
+        <div id="eventModal" class="modal">
+            <div class="modal-content">
+              <div id="record">✔Record My Fitness</div>
+              <div id="eat-today">1. 오늘 먹은 음식</div>
+              <input type="text" placeholder="ex) 단백질 쉐이크,파스타,바나나" id="food-today">
+              <div id="today-kcal">2. 오늘 먹은 총 칼로리</div>
+              <input type="text" placeholder="ex) 2100Kcal" id="kcal-today">
+              <div id="today-fit">3. 오늘했던 운동</div>
+              <input type="text" placeholder="ex) 런닝 20분, 레그 익스텐션 15회 5세트, 렛풀다운 20회 3세트" id="fit-today">
+              <div id="fit-kcal">4. 오늘 운동한 칼로리</div>
+              <input type="text" placeholder="ex) 890Kcal" id="kcal-fit">
+              <div id="tomorrow-plan">5. 내일의 식단 & 운동계획</div>
+              <input type="text" placeholder="ex) 닭가슴살 샐러드, 간장계란밥, 검은콩 두유 2개" id="tomorrow-food">
+              <br>
+              <input type="text" placeholder="ex) 걷기 20분, 스쿼트 15회 3세트, 벤치프레스" id="tomorrow-fit">
+              <br>
+              <button id="submit">저장하기</button>
+              <button id="close">취소하기</button>
+              
+        </div>
     </body>
 </html>
