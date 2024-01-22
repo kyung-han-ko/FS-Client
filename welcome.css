@@ -94,17 +94,37 @@ label {
 #emailplease:hover {
     background-color: rgb(84, 84, 247);
     transition: 0.8s;
+    cursor: pointer;
 }
 #emailCheckBtn:hover {
     background-color: rgb(84, 84, 247);
     transition: 0.8s;
+    cursor: pointer;
 }
 #check_password:hover {
     background-color: rgb(84, 84, 247);
     transition: 0.8s;
+    cursor: pointer;
 }
 #signup_button:hover {
     background-color: rgb(84, 84, 247);
     transition: 0.8s;
+    cursor: pointer;
 }
-
+#name {
+    width: 200px;
+}
+#check_name {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: slateblue;
+    color: white;
+    width: 130px;
+    font-weight: bold;
+}
+#check_name:hover {
+    background-color: rgb(84, 84, 247);
+    transition: 0.8s;
+    cursor: pointer;
+}

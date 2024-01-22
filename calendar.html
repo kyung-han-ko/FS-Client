@@ -5,30 +5,53 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         <link rel="stylesheet" href="calendar.css">
     </head>
-    <body>
-        <div id="goback_button">
-        <a href="main.html"><input type="button" value="Go Back to Station"></a>
+    <header id="common_header">
+        <div class="logo">
+            <a href="main.html"><img src="DFDFDFDFHH.png" id="logo" alt="로고" /></a></div>
+        <div id="menu_wrap">
+            <div class="header_menu"><a href="#">Self Check</a></div>
+            <div class="header_menu"><a href="#">Food Styling</a></div>
+            <div class="header_menu"><a href="#">Q/A</a></div>
         </div>
+        <div id="right_menu_wrap">
+            <div id="log_in_button"><a href="login.html"><span>Login / Join 🔒</span></a></div>
+            <div id="mypage_button"><a href="mypage.html"><span>MyPage 🔑</span></a></div>
+            <div id="logout_button"><a><span>logout</span></a></div>
+        </div>
+    </header>
+    <body id="body">
         <div id='calendar'></div>
+        <div id="detail-plan-box">What is your plan ? 😃
+            <input type="button" value="Delete Plan" id="delete-plan">
+            <input type="button" value="reload" id="reload">
+            <div id="detail-plan">클릭해서 원하는 날짜에 계획을 입력해요 👍
+                <br><br>
+                <p>1. 저장되어있는 일정을 클릭하면 세부 일정을 볼 수 있어요 ✔</p>
+                <p>2. 일정을 더블클릭하면 새로운 일정을 등록할 수 있어요 ✔</p>
+                <p>3. Delete-Plan 버튼을 클릭하면 선택한 일정을 삭제할 수 있어요 ✔</p>
+                <p>4. Reload 버튼을 클릭하면 페이지를 새로고침 할 수 있어요 ✔</p>
+            </div>
+        </div>
         <div id="eventModal" class="modal">
             <div class="modal-content">
               <div id="record">✔Record My Fitness</div>
-              <div id="eat-today">1. 오늘 먹은 음식</div>
+              <div id="plan-title">1. Plan Title</div>
+              <input type="text" placeholder="ex) 다이어트 D-20 계획 1일차" id="title-plan">
+              <div id="eat-today">2. 오늘 먹은 음식</div>
               <input type="text" placeholder="ex) 단백질 쉐이크,파스타,바나나" id="food-today">
-              <div id="today-kcal">2. 오늘 먹은 총 칼로리</div>
+              <div id="today-kcal">3. 오늘 먹은 총 칼로리</div>
               <input type="text" placeholder="ex) 2100Kcal" id="kcal-today">
-              <div id="today-fit">3. 오늘했던 운동</div>
+              <div id="today-fit">4. 오늘했던 운동</div>
               <input type="text" placeholder="ex) 런닝 20분, 레그 익스텐션 15회 5세트, 렛풀다운 20회 3세트" id="fit-today">
-              <div id="fit-kcal">4. 오늘 운동한 칼로리</div>
+              <div id="fit-kcal">5. 오늘 운동한 칼로리</div>
               <input type="text" placeholder="ex) 890Kcal" id="kcal-fit">
-              <div id="tomorrow-plan">5. 내일의 식단 & 운동계획</div>
+              <div id="tomorrow-plan">6. 내일의 식단 & 운동계획</div>
               <input type="text" placeholder="ex) 닭가슴살 샐러드, 간장계란밥, 검은콩 두유 2개" id="tomorrow-food">
               <br>
               <input type="text" placeholder="ex) 걷기 20분, 스쿼트 15회 3세트, 벤치프레스" id="tomorrow-fit">
               <br>
               <button id="submit">저장하기</button>
               <button id="close">취소하기</button>
-              
         </div>
     </body>
 </html>

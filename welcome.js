@@ -38,10 +38,15 @@
 	}
 })
 
-		
-
 	// 최종 회원가입 버튼 시 정보를 전달하기위한 코드 
 	document.getElementById("signup_button").addEventListener("click", function(){
+		const nameValue = document.getElementById("name").value;
+		const checkNicknameLength = 10;
+	
+		if (nameValue.length > checkNicknameLength) {
+			swal("닉네임 오류", "닉네임은 10자 이하여야 합니다.", "warning");
+		}
+
 		fetch("http://localhost:8080/signup", {
 			method : "post",
 			body : JSON.stringify({
@@ -73,12 +78,14 @@
 			}).then(function(){
 				location.href='login.html'
 			})
-		} else if(res.result){
+		} else if(res.result === false){
 			swal("회원가입 실패" , "입력하지 않은 정보가 있습니다. 확인 후 모두 입력해주세요", "warning")
 
-		} else if(res.test){
+		} else if(res.test === false){
 			swal("비밀번호 오류" , "비밀번호와 비밀번호 확인이 일치하지 않습니다", "warning")
-		} else {
+		} else if(res.nickname === false) {
+			swal("회원가입 실패","중복된 닉네임이 있습니다. 다른 닉네임을 입력해주세요","warning")
+		} else if(res.success === false){
 			swal("회원가입 실패","중복된 회원이 있습니다. 다른 이메일을 입력해주세요","warning")
 		}
 	};
@@ -130,7 +137,7 @@
 				checkSend(res);
 			})
 		})
-	
+
 		function checkSend(res){
 			console.log("넘어와라 제발" ,res);
 			if(res.success){
@@ -141,4 +148,26 @@
 				testBox.style.display = "none";
 			}
 		};
+
+		document.getElementById("check_name").addEventListener("click", function(){			
+			fetch("http://localhost:8080/checkName", {
+				method : "post",
+				body : JSON.stringify({
+					name : document.getElementById("name").value,
+				}),
+				headers : {
+					"Content-Type" : "application/json"
+				},credentials : "include",
+				mode : "cors"
+			}).then(function(res){
+				return res.json();
+			}).then(function(res){
+				console.log("넘어가라 제발" ,res);
+				if(!res.nickname){
+					swal("닉네임 사용불가","중복된 닉네임의 회원이 있습니다","error")
+				} else {
+					swal("닉네임 사용가능","닉네임을 사용하실 수 있습니다","success")
+				}
+			})
+		})
 
