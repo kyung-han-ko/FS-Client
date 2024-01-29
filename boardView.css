@@ -1,0 +1,144 @@
+a {
+    text-decoration: none;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  #common_header {
+    display: flex;
+    justify-content: space-between;
+    /* position: sticky; */
+    top: 0px;
+    background-color: black;
+    margin-bottom: 30px;
+  }
+  #logout_button {
+    /* margin-left: auto; */
+    /* width: 150px; */
+    margin-top: 3px;
+    cursor: pointer;
+  }
+  .header_menu {
+    text-align: center;
+    float: left;
+    width: 200px;
+    margin-top: 30px;
+    color: white;
+  }
+  #right_menu_wrap {
+    float: right;
+    /* color: black; */
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   font-size: 1rem;
+   font-weight: bold;
+   /* text-align: center; */
+   display: flex;
+   /*  */
+   padding: 20px;
+  }
+  #right_menu_wrap a {
+    color: white;
+    /* display: flex; */
+    margin: 10px;
+  }
+  
+  
+  .header_menu a {
+    color: white;
+    /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   font-size: 1rem;
+   font-weight: bold;
+  }
+  
+  #logo {
+    /* margin-top: 20px; */
+    width: 150px;
+    height: 80px;
+    float: left;
+  }
+  /* #log_in_button > a {
+    color: blue;
+    text-decoration: none;
+  } */
+  
+  .header_menu a:hover {
+    background-color: black;
+    color: skyblue;
+    transition-delay: 0.18s;
+    transition-duration: 0.18s;
+    border-radius: 4px;
+    transform: scale(1.2);
+    transition: 0.3s, color 0.3s;
+    /* font-weight: bold; */
+    
+  }
+  
+  #getnickname {
+      color: rgb(132, 197, 250);
+      margin-top: 5px;
+      font-weight: bold;
+    }
+    #calendarstring {
+      color: white;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-top: 8px;
+      font-size: small;
+      font-weight: bold;
+    }
+
+    /**/
+
+    #boardInfoContainer {
+      width: 1000px;
+      height: 1000px;
+      padding: 20px;
+      border: 3px rgb(176, 150, 250) solid;
+      border-radius: 20px;
+      margin: 0 auto;
+    }
+    
+    h1 {
+      color: #554af0;
+    }
+
+    .name-post {
+      margin-top: 50px;
+      font-size: medium;
+      font-weight: bold;
+      border: 2px solid rgb(176, 150, 250);
+      padding: 15px;
+      border-radius: 15px;
+    }
+    .date-post {
+      margin-top: 10px;
+      font-weight: bold;
+      font-size: medium;
+      border: 2px solid rgb(176, 150, 250);
+      padding: 15px;
+      border-radius: 15px;
+    }
+    .title-post {
+      margin-top: 10px;
+      font-size: medium;
+      border: 2px solid rgb(176, 150, 250);
+      padding: 15px;
+      border-radius: 15px;
+      font-weight: bold;
+    }
+    .text-post {
+      padding: 15px;
+      border-radius: 15px;
+      margin-top: 20px;
+      height: 500px;
+      max-height: 500px; /* 최대 높이 지정, 스크롤 가능하도록 */
+      line-height: 1.5; /* 텍스트 간격 조절 */
+      white-space: pre-wrap;
+    }
+
+    .name-post, .date-post, .title-post {
+      overflow-wrap: break-word; /* 긴 텍스트에 대한 자동 줄 바꿈 */
+    }

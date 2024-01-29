@@ -1,13 +1,19 @@
 const token = localStorage.getItem("UserToken");
 const loginButton = document.getElementById('log_in_button');
-const mypage_button = document.getElementById('mypage_button');
 const logout_button = document.getElementById('mypage_button');
+const nickname = localStorage.getItem("UserName");
+const getnickname = document.getElementById('getnickname');
+const calendarstring = document.getElementById('calendarstring');
 
 if (!token) {
   window.location.href = "./login.html";
+  calendarstring.style.display = 'none';
+  getnickname.style.display = 'none';
 } else {
-  mypage_button.style.display = "block";
   loginButton.style.display = 'none';
+  getnickname.textContent = nickname;
+  calendarstring.textContent = " 님의 기록들";
+  calendarstring.style.display = 'inline';
 }
 
 // 회원이 아니면 튕겨내기
@@ -19,7 +25,6 @@ let clickedDate = "";
 let clickedEventId = "";
 
 // 필요한 전역 변수들을 선언해놓은 로직
-
 // 화면을 띄우자마자 보여지는 화면에 대한 로직, DOMContentLoaded를 잘 기억해야함
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -58,10 +63,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // 입력한 데이터 가져오는 로직
   const currentYearMonth = new Date();
   currentYM = `${currentYearMonth.getFullYear()}-${(currentYearMonth.getMonth() + 1).toString().padStart(2, '0')}`;
+  const userId = localStorage.getItem("UserId");
 
   // 쿼리 매개를 정의하는 거니까 백틱으로 정의해줘야하고 템플릿 리터럴은 궁극적으로
   // 변수나 표현식을 문자열에 넣기 위함임..
-  fetch(`http://localhost:8080/getCalendarData?currentYM=${currentYM}`, {
+  fetch(`http://localhost:8080/getCalendarData?currentYM=${currentYM}&userId=${userId}`, {
     method: "get",
     headers: {
       "Content-Type": "application/json"
@@ -127,6 +133,7 @@ document.getElementById("submit").addEventListener("click", function () {
     fetch("http://localhost:8080/loadCalendar", {
       method: "post",
       body: JSON.stringify({
+        userId : localStorage.getItem("UserId"),
         clientClickData: currentYM + "-" + dateHandler.getDate(),
         eventTitle: document.getElementById("title-plan").value,
         todayFood: document.getElementById("food-today").value,
@@ -280,6 +287,8 @@ document.getElementById("logout_button").addEventListener("click", function(){
           if (result.isConfirmed) {
               console.log('hi')
               localStorage.removeItem("UserToken");
+              localStorage.removeItem("UserId");
+              localStorage.removeItem("UserName");
               logoutButton.style.display = "none";
               Swal.fire('로그아웃', '로그아웃이 성공적으로 완료되었습니다.', 'success');
               //강제로 새로고침하는 코드

@@ -16,7 +16,7 @@ body {
 #logout_button {
     /* margin-left: auto; */
     /* width: 150px; */
-    margin-top: 2px;
+    margin-top: 8px;
     cursor: pointer;
 }
 .header_menu {
@@ -223,5 +223,18 @@ main {
 }
 .static a {
     /* text-decoration: none; */
+    color: rgb(255, 255, 255);
+}
+#nickname {
+    color: rgb(158, 212, 243);
+    margin-top: 10px;
+    margin-right: 5px;
+    font-weight: bold;
+}
+#welcome {
     color: white;
+    margin-right: 20px;
+    font-size: small;
+    margin-top: 13px;
+    font-weight: bold;
 }

@@ -22,6 +22,11 @@ document.getElementById("log_in_button").addEventListener("click", function(){
                 icon: "success"
             }).then(() => {
                 localStorage.setItem("UserToken", res.token);
+                //매우중요
+                localStorage.setItem("UserId", res.userId);
+                localStorage.setItem("UserName", res.userName);
+                console.log(res.userId);
+                console.log(res.token);
                 window.location.href = "./main.html";
             });
         } else if(res.result){
