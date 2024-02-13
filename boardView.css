@@ -4,6 +4,7 @@ a {
   body {
     margin: 0;
     padding: 0;
+    height: 2000px;
   }
   #common_header {
     display: flex;
@@ -94,19 +95,23 @@ a {
 
     #boardInfoContainer {
       width: 1000px;
-      height: 1000px;
-      padding: 20px;
+      max-height: 700px;
+      padding: 10px;
       border: 3px rgb(176, 150, 250) solid;
       border-radius: 20px;
       margin: 0 auto;
+      margin-top: 90px;
+      overflow-y: auto;
+      width: 95%; /* 원하는 너비 설정 */
     }
     
     h1 {
       color: #554af0;
+      padding: 20px;
     }
 
     .name-post {
-      margin-top: 50px;
+      margin-top: 30px;
       font-size: medium;
       font-weight: bold;
       border: 2px solid rgb(176, 150, 250);
@@ -134,11 +139,198 @@ a {
       border-radius: 15px;
       margin-top: 20px;
       height: 500px;
-      max-height: 500px; /* 최대 높이 지정, 스크롤 가능하도록 */
-      line-height: 1.5; /* 텍스트 간격 조절 */
+      max-height: 500px; /* 최대 높이 지정, 스크롤 추가요~ */
+      line-height: 1.5; /* 텍스트 간격 조절하기 */ 
       white-space: pre-wrap;
     }
 
     .name-post, .date-post, .title-post {
       overflow-wrap: break-word; /* 긴 텍스트에 대한 자동 줄 바꿈 */
     }
+    #goback {
+      width: 120px;
+      height: 30px;
+      border: none;
+      margin-top: 20px;
+      border-radius: 5px;
+      background-color: slateblue;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      margin-left: 50px;
+      
+    }
+    #modify,#delete {
+      float: right;
+      margin-top: 20px;
+      width: 120px;
+      height: 30px;
+      border: none;
+      border-radius: 5px;
+      background-color: slateblue;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      display: none;
+    }
+    #modify {
+      margin-left: 10px;
+      margin-right: 50px;
+    }
+
+    #container {
+      font-size: large;
+      margin: 0 auto;
+      margin-top: 100px;
+      width: 800px;
+      display: none;
+      border: 1px red solid;
+      padding: 30px;
+      font-weight: bold;
+      border: 2px solid rgb(176, 150, 250);
+      border-radius: 20px;
+    }
+    #title {
+      width: 700px;
+      height: 30px;
+      padding: 7px;
+      border: 2px solid rgb(176, 150, 250);
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    #text {
+      width: 700px;
+      height: 500px;
+      max-height: 1000px;
+      padding: 10px;
+      border: 2px solid rgb(176, 150, 250);
+      border-radius: 10px;
+    }
+
+    #updateButton , #cancel {
+      width: 120px;
+      height: 30px;
+      border: none;
+      margin-top: 20px;
+      border-radius: 5px;
+      background-color: slateblue;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .reply {
+      /* display: flex; */
+      border: 2px rgb(176, 150, 250) solid;
+      align-items: flex-start; /* 추가 */
+      padding: 10px;
+      width: 700px;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      border-radius: 20px;
+      white-space: pre-wrap;
+      justify-content: space-between; /* 수정 및 삭제 버튼을 맨 우측으로 이동 */
+  }
+  
+  #userCreatReply {
+      margin-top: 50px;
+      margin-left: 50px;
+  }
+  
+  .reply-buttons {
+      display: flex;
+      /* float: right; */
+      text-align: center;
+      justify-content: center;
+      margin-top: 10px;
+      display: none;
+      text-align: right;
+  }
+  
+  #h1 {
+      margin-top: 50px;
+  }
+  
+  .reply-name {
+      font-weight: bold;
+      font-size: small;
+      text-align: left;
+  }
+  
+  .reply-text {
+      font-size: small;
+      align-self: flex-start; /* 텍스트를 왼쪽으로 붙임 */
+        text-align: left;
+  }
+  
+  #replyBox {
+      margin-top: 100px;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+  }
+  
+  #reply {
+      padding: 10px;
+      border: 3px solid rgb(176, 150, 250);
+      border-radius: 20px;
+      font-weight: bold;
+  }
+  
+  #saveReply {
+      margin-top: 10px;
+      width: 120px;
+      height: 30px;
+      border: none;
+      border-radius: 5px;
+      background-color: slateblue;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+  }
+  #userCreatReply button {
+    width: 50px;
+    height: 25px;
+    border: none;
+    margin-top: 5px;
+    border-radius: 10px;
+    background-color: rgb(223, 223, 223);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin-right: 10px;
+  }
+ #containerReply {
+  display: none;
+ }
+ #containerReply div {
+  font-weight: bold;
+ }
+
+ #replytext {
+  width: 800px;
+  height: 500px;
+  max-height: 1000px;
+  padding: 10px;
+  border: 3px solid rgb(176, 150, 250);
+  border-radius: 10px;
+  /* font-weight: bold; */
+ }
+
+ #cancelReply , #updateButtonReply {
+  width: 120px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  background-color: slateblue;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+ }

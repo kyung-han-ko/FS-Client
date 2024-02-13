@@ -1,53 +1,60 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script defer src="board.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-        <link rel="stylesheet" href="board.css">
-    </head>
-    <header id="common_header">
-        <div class="logo">
-            <a href="main.html"><img src="DFDFDFDFHH.png" id="logo" alt="로고" /></a></div>
-        <div id="menu_wrap">
-            <div class="header_menu"><a href="#">Self Check</a></div>
-            <div class="header_menu"><a href="#">Food Styling</a></div>
-            <div class="header_menu"><a href="board.html">Common Board</a></div>
+  <head>
+    <script defer src="board.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link rel="stylesheet" href="board.css" />
+  </head>
+  <header id="common_header">
+    <div class="logo">
+      <a href="main.html"><img src="DFDFDFDFHH.png" id="logo" alt="로고" /></a>
+    </div>
+    <div id="menu_wrap">
+      <div class="header_menu"><a href="#">Self Check</a></div>
+      <div class="header_menu"><a href="#">Food Styling</a></div>
+      <div class="header_menu"><a href="board.html">Common Board</a></div>
+    </div>
+    <div id="right_menu_wrap">
+      <div id="log_in_button">
+        <a href="login.html"><span>Login / Join 🔒</span></a>
+      </div>
+      <div id="getnickname"><a href="/"></a></div>
+      <div id="calendarstring"></div>
+      <!-- <div id="mypage_button"><a href="mypage.html"><span>MyPage 🔑</span></a></div> -->
+      <div id="logout_button">
+        <a><span>logout 🔑</span></a>
+      </div>
+    </div>
+  </header>
+  <body>
+    <div id="container">
+      <div id="container2">
+        <div id="userCommonBoard">User Common Board ✔</div>
+      </div>
+      <div id="explainBoard">
+        <p>1. 게시판에 욕설 / 비방글에 대해서는 엄격하게 조치합니다</p>
+        <p>
+          2. 나만의 운동방법, 나만의 식단 레시피, 건강의학상식 등을 공유합니다
+        </p>
+      </div>
+      <div id="container3">
+        <a href="calendar.html"
+          ><button id="goCalendar">캘린더 확인하기</button></a
+        >
+        <a href="write.html"><button id="writeButton">글 작성하기</button></a>
+      </div>
+      <div id="board1">
+        <div id="board1_header">
+          <div id="number">번호</div>
+          <div id="writer">작성자</div>
+          <div id="title">제목</div>
+          <div id="date">작성날짜</div>
+          <!-- <div id="recommend">추천수</div> -->
+          <div id="look">조회수</div>
         </div>
-        <div id="right_menu_wrap">
-            <div id="log_in_button"><a href="login.html"><span>Login / Join 🔒</span></a></div>
-            <div id="getnickname"><a href="/"></a></div>
-            <div id="calendarstring"></div>
-            <!-- <div id="mypage_button"><a href="mypage.html"><span>MyPage 🔑</span></a></div> -->
-            <div id="logout_button"><a><span>logout 🔑</span></a></div>
-        </div>
-    </header>
-    <body>
-
-        <div id="container">
-            <div id="container2">
-                <div id="userCommonBoard">USER COMMUNICATION BOARD</div>
-            </div>
-            <div id="explainBoard">
-                <p>1. 게시판에 욕설 / 비방글에 대해서는 엄격하게 조치합니다</p>
-                <p>2. 나만의 운동방법, 나만의 식단 레시피, 건강의학상식 등을 공유합니다</p>
-            </div>
-            <div id="container3">
-                <a href="calendar.html"><button id="goCalendar">캘린더 확인하기</button></a>
-                <a href="write.html"><button id="writeButton">글 작성하기</button></a>
-            </div>
-            <div id="board1">
-                <div id="board1_header">
-                    <div id="number">번호</div>
-                    <div id="writer">작성자</div>
-                    <div id="title">제목</div>
-                    <div id="date">작성날짜</div>
-                    <!-- <div id="recommend">추천수</div> -->
-                    <div id="look">조회수</div>
-                </div>
-            </div>
-            <div id="board2">
-            </div>
-        </div>
-
-    </body>
+      </div>
+      <div id="board2"></div>
+      <div id="pagenation"></div>
+    </div>
+  </body>
 </html>

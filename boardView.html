@@ -23,10 +23,57 @@
     </header>
     <body>
 
+        <div id="container">
+            <h1>Modify My Board ✔</h1>
+            <div>
+                <div>변경 희망하는 타이틀을 작성해주세요</div>
+                <br>
+                <input type="text" id="title"></input>
+            </div>
+            <br>
+            <div>
+                <div>변경 희망하는 텍스트를 작성해주세요</div>
+                <br>
+                <textarea id="text"></textarea>
+            </div>
+            <br>
+            <button id="cancel">취소하기</button>
+            <button id="updateButton">업데이트</button>
+        </div>
+
+        
     <div id="boardInfoContainer">
         <h1>View Clicked Post ✔</h1>
         <div id="boardInfo"></div>
+        <div>
+        </div>
     </div>
+    <input type="button" id="goback" value="게시판">
+    <input type="button" id="modify" value="글 수정하기">
+    <input type="button" id="delete" value="글 삭제하기">
+
+<div id="replyBox">
+    <textarea name="content" id="reply" cols="100" rows="4" placeholder="✔ 댓글을 작성하실 수 있습니다"></textarea>
+    <div>
+        <button id="saveReply">댓글달기</button>
+    </div>
+    <h1 id="h1">--------- User 👀 Reply ---------</h1>
+
+    <div id="userCreatReply"></div>
+
+    <div id="containerReply">
+        <h1>Modify My Reply ✔</h1>
+        <br>
+        <div>
+            <div>변경 희망하는 댓글로 수정해주세요</div>
+            <br>
+            <textarea id="replytext"></textarea>
+        </div>
+        <br>
+        <button id="cancelReply">취소하기</button>
+        <button id="updateButtonReply">업데이트</button>
+    </div>
+</div>
 
     </body>
 </html>
