@@ -58,6 +58,289 @@ document.getElementById("logout_button").addEventListener("click", function () {
 // 게시판
 
 document.addEventListener("DOMContentLoaded", function () {
+  const lookButton = document.getElementById("look");
+  lookButton.addEventListener("click", function () {
+    fetchLookData();
+  });
+  function fetchLookData(currentLook = 1) {
+    fetch(`http://localhost:8080/lookAllPosts?currentLook=${currentLook}`, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      mode: "cors",
+    })
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (res) {
+        if (res.success) {
+          const indexSize = (currentLook - 1) * pageSize + 1;
+          displayLookData(res.result, indexSize);
+          const allPages = res.allPages;
+          displayLookPagenation(currentLook, allPages);
+        } else {
+          console.log("데이터 가져오기 실패");
+        }
+      })
+      .catch(function (err) {
+        console.error("에러:", err);
+      });
+  }
+
+  function displayLookPagenation(currentLook, allPages) {
+    const pagenation = document.getElementById("pagenation");
+    pagenation.innerHTML = "";
+
+    const firstButton = document.createElement("button");
+    firstButton.textContent = "◀◀";
+    firstButton.classList.add("firstButton");
+    firstButton.addEventListener("click", function () {
+      fetchLookData(1);
+    });
+    pagenation.appendChild(firstButton);
+
+    const prevButton = document.createElement("button");
+    prevButton.textContent = "◀";
+    prevButton.addEventListener("click", function () {
+      if (currentLook > 1) {
+        fetchLookData(currentLook - 1);
+      }
+    });
+    pagenation.appendChild(prevButton);
+
+    const startPage =
+      Math.floor((currentLook - 1) / pageGroupSize) * pageGroupSize + 1;
+    const endPage = Math.min(startPage + pageGroupSize - 1, allPages);
+    for (let i = startPage; i <= endPage; i++) {
+      const pageButton = document.createElement("button");
+      pageButton.textContent = i;
+      pageButton.addEventListener("click", function () {
+        fetchLookData(i, currentLook);
+      });
+      if (currentLook === i) {
+        pageButton.classList.add("selected");
+      }
+      pagenation.appendChild(pageButton);
+    }
+
+    const nextButton = document.createElement("button");
+    nextButton.textContent = "▶";
+    nextButton.addEventListener("click", function () {
+      if (currentLook < allPages) {
+        fetchLookData(currentLook + 1);
+      } else {
+        alert("마지막 데이터 입니다");
+      }
+    });
+    pagenation.appendChild(nextButton);
+
+    const lastButton = document.createElement("button");
+    lastButton.textContent = "▶▶";
+    lastButton.classList.add("lastButton");
+    lastButton.addEventListener("click", function () {
+      fetchLookData(allPages);
+    });
+    pagenation.appendChild(lastButton);
+  }
+
+  function displayLookData(lookResult, indexSize) {
+    const boardContainer = document.getElementById("board2");
+    // 기존 데이터를 모두 삭제
+    boardContainer.innerHTML = "";
+
+    // 검색된 데이터만을 표시
+    lookResult.forEach((info, index) => {
+      const createDiv = document.createElement("div");
+      createDiv.classList.add("board-post");
+      //꼭 기억해야 하는 코드 아래꺼
+      createDiv.setAttribute("id", info.boardid);
+
+      const writerDiv = document.createElement("div");
+      writerDiv.classList.add("post-writer");
+      writerDiv.textContent = info.name;
+
+      const titleDiv = document.createElement("div");
+      titleDiv.classList.add("post-title");
+      titleDiv.textContent = info.title;
+
+      const dateDiv = document.createElement("div");
+      dateDiv.classList.add("post-date");
+      dateDiv.textContent = formatDate(info.createdAt);
+
+      const indexDiv = document.createElement("div");
+      indexDiv.classList.add("post-index");
+      indexDiv.textContent = index + indexSize;
+
+      const lookDiv = document.createElement("div");
+      lookDiv.classList.add("post-look");
+      lookDiv.textContent = info.look;
+
+      createDiv.appendChild(indexDiv);
+      createDiv.appendChild(writerDiv);
+      createDiv.appendChild(titleDiv);
+      createDiv.appendChild(dateDiv);
+      createDiv.appendChild(lookDiv);
+
+      boardContainer.appendChild(createDiv);
+    });
+  }
+
+  // 검색기능에 대해서 공부할범위 , 2월15일부터 17일까지의 분량임
+
+  const searchButton = document.getElementById("searchButton");
+  searchButton.addEventListener("click", function () {
+    const searchValue = document.getElementById("search").value;
+    if (searchValue.trim() === "") {
+      alert("정보를 입력하세요");
+    } else {
+      searchPosts(searchValue);
+    }
+  });
+
+  const searchInput = document.getElementById("search");
+  searchInput.addEventListener("keypress", function (e) {
+    const searchInputValue = searchInput.value;
+    if (e.key === "Enter") {
+      if (searchInputValue.trim() === "") {
+        alert("데이터를 입력하세요");
+      } else {
+        searchPosts(searchInputValue);
+      }
+    }
+  });
+
+  function searchPosts(keyword, currentPage = 1) {
+    fetch(
+      `http://localhost:8080/searchPosts?currentPage=${currentPage}&keyword=${keyword}`,
+      {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        mode: "cors",
+      }
+    )
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (res) {
+        if (res.success) {
+          // 검색 결과 표시
+          const indexSize = (currentPage - 1) * pageSize + 1;
+          displaySearch(res.result, indexSize);
+          const allPages = res.allPages;
+          displaySearchPagenation(keyword, allPages, currentPage);
+          // 페이지 네이션 버튼들을 새로 생성
+        } else {
+          console.log("데이터 가져오기 실패");
+        }
+      })
+      .catch(function (err) {
+        console.error("에러:", err);
+      });
+  }
+
+  function displaySearchPagenation(keyword, allPages, currentPage) {
+    const pagenation = document.getElementById("pagenation");
+    pagenation.innerHTML = "";
+
+    const firstButton = document.createElement("button");
+    firstButton.textContent = "◀◀";
+    firstButton.classList.add("firstButton");
+    firstButton.addEventListener("click", function () {
+      searchPosts(keyword, 1);
+    });
+    pagenation.appendChild(firstButton);
+
+    const prevButton = document.createElement("button");
+    prevButton.textContent = "◀";
+    prevButton.addEventListener("click", function () {
+      if (currentPage > 1) {
+        searchPosts(keyword, currentPage - 1);
+      }
+    });
+    pagenation.appendChild(prevButton);
+
+    const startPage =
+      Math.floor((currentPage - 1) / pageGroupSize) * pageGroupSize + 1;
+    const endPage = Math.min(startPage + pageGroupSize - 1, allPages);
+    for (let i = startPage; i <= endPage; i++) {
+      const pageButton = document.createElement("button");
+      pageButton.textContent = i;
+      pageButton.addEventListener("click", function () {
+        searchPosts(keyword, i);
+      });
+      if (currentPage === i) {
+        pageButton.classList.add("selected");
+      }
+      pagenation.appendChild(pageButton);
+    }
+
+    const nextButton = document.createElement("button");
+    nextButton.textContent = "▶";
+    nextButton.addEventListener("click", function () {
+      if (currentPage < allPages) {
+        searchPosts(keyword, currentPage + 1);
+      } else {
+        alert("마지막 페이지 입니다");
+      }
+    });
+    pagenation.appendChild(nextButton);
+
+    const lastButton = document.createElement("button");
+    lastButton.textContent = "▶▶";
+    lastButton.classList.add("lastButton");
+    lastButton.addEventListener("click", function () {
+      searchPosts(keyword, allPages);
+    });
+    pagenation.appendChild(lastButton);
+  }
+
+  function displaySearch(searchResult, indexSize) {
+    const boardContainer = document.getElementById("board2");
+    // 기존 데이터를 모두 삭제
+    boardContainer.innerHTML = "";
+
+    // 검색된 데이터만을 표시
+    searchResult.forEach((info, index) => {
+      const createDiv = document.createElement("div");
+      createDiv.classList.add("board-post");
+      //꼭 기억해야 하는 코드 아래꺼
+      createDiv.setAttribute("id", info.boardid);
+
+      const writerDiv = document.createElement("div");
+      writerDiv.classList.add("post-writer");
+      writerDiv.textContent = info.name;
+
+      const titleDiv = document.createElement("div");
+      titleDiv.classList.add("post-title");
+      titleDiv.textContent = info.title;
+
+      const dateDiv = document.createElement("div");
+      dateDiv.classList.add("post-date");
+      dateDiv.textContent = formatDate(info.createdAt);
+
+      const indexDiv = document.createElement("div");
+      indexDiv.classList.add("post-index");
+      indexDiv.textContent = index + indexSize;
+
+      const lookDiv = document.createElement("div");
+      lookDiv.classList.add("post-look");
+      lookDiv.textContent = info.look;
+
+      createDiv.appendChild(indexDiv);
+      createDiv.appendChild(writerDiv);
+      createDiv.appendChild(titleDiv);
+      createDiv.appendChild(dateDiv);
+      createDiv.appendChild(lookDiv);
+
+      boardContainer.appendChild(createDiv);
+    });
+  }
+
   let currentData = 1; // 전역변수로 선언하고 밑에 패치에 넣었음
   //페이지 이동할때마다 붙여주고 넘어가야함
   const pageSize = 10; // 10개씩 담고
@@ -108,7 +391,8 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .then(function (res) {
         if (res.success) {
-          displayData(res.result); // 새로운 데이터 표시
+          const startIndex = (currentData - 1) * pageSize + 1; // 시작 인덱스 계산
+          displayData(res.result, startIndex); // 새로운 데이터 표시
         } else {
           console.log("데이터 가져오기 실패");
         }
@@ -181,7 +465,7 @@ document.addEventListener("DOMContentLoaded", function () {
   fetchData(currentData);
 });
 
-function displayData(data) {
+function displayData(data, startIndex) {
   const boardContainer = document.getElementById("board2");
 
   data.forEach((info, index) => {
@@ -204,7 +488,8 @@ function displayData(data) {
 
     const indexDiv = document.createElement("div");
     indexDiv.classList.add("post-index");
-    indexDiv.textContent = index + 1;
+    indexDiv.textContent = startIndex + index;
+    //시작인덱스와 함께 계산해서 계속해서 넘버링을 매겨주었당
 
     const lookDiv = document.createElement("div");
     lookDiv.classList.add("post-look");

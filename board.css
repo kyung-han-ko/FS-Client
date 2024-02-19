@@ -63,6 +63,19 @@ body {
   text-decoration: none;
 } */
 
+#search {
+  width: 500px;
+  height: 30px;
+  border: 2.5px solid rgb(168, 104, 233);
+  border-radius: 12px;
+  padding-left: 10px;
+  font-weight: bold;
+}
+#searchButton {
+  width: 50px !important;
+  font-size: 13px;
+}
+
 .header_menu a:hover {
   background-color: black;
   color: skyblue;
@@ -140,7 +153,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   text-align: center;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 #board1,
@@ -229,8 +242,8 @@ body {
 }
 .selected {
   font-size: large !important;
-  border: 1px solid black !important;
   border-radius: 10px !important;
+  color: #554af0 !important;
   /* background-color: rgb(0, 0, 0) !important; */
 }
 .lastButton {
@@ -239,4 +252,13 @@ body {
 }
 .firstButton {
   font-size: 10px !important;
+}
+.searchLastButton {
+  font-size: 10px !important;
+}
+.searchFirstButton {
+  font-size: 10px !important;
+}
+#look {
+  cursor: pointer;
 }
