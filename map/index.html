@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Fitness Station</title>
+    <link rel="stylesheet" href="./index.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="./index.js"></script>
+    <script
+      type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7c6095b62bb5da27aaf7fb143e7b084f&libraries=services,clusterer,drawing"
+    ></script>
+  </head>
+  <style></style>
+  <body>
+    <header id="common_header">
+      <div class="logo">
+        <a href="../main/index.html"
+          ><img src="../photo/DFDFDFDFHH.png" id="logo" alt="로고"
+        /></a>
+      </div>
+      <div id="menu_wrap">
+        <div class="header_menu"><a href="#">Self Check</a></div>
+        <div class="header_menu"><a href="#">Food Styling</a></div>
+        <div class="header_menu">
+          <a href="../board/index.html">Common Board</a>
+        </div>
+        <div class="header_menu"><a href="../map/index.html">Salad Map</a></div>
+      </div>
+      <div id="right_menu_wrap">
+        <div id="nickname"></div>
+        <div id="welcome"></div>
+        <div id="log_in_button">
+          <a href="../login/index.html"><span>Login / Join 🔒</span></a>
+        </div>
+        <div id="mypage_button">
+          <a href="mypage.html"><span id="myname">MyPage 🔑</span></a>
+        </div>
+        <div id="logout_button">
+          <a><span>logout 🔑</span></a>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <div id="saladMap">- Salad Map -</div>
+      <div id="ment1">1. 빠르게 식단 구매처를 찾을 수 있습니다</div>
+      <div id="ment2">2. 원하는 식단을 비교해서 찾아볼 수 있습니다</div>
+      <div id="keywordWrap"></div>
+      <div id="maps"></div>
+      <script>
+        // 카카오 맵 초기화
+        const container = document.getElementById("maps");
+        const options = {
+          center: new kakao.maps.LatLng(37.574187, 126.976882),
+          level: 5,
+        };
+
+        const map = new kakao.maps.Map(container, options);
+      </script>
+    </main>
+    <footer id="common_footer">
+      <div class="footer_header">
+        <a href="#"
+          ><img src="../photo/DFDFDFDFHH.png" id="logo2" alt="로고"
+        /></a>
+        <div class="footer_header_right">
+          <h3>피트니스 스테이션 피플 ✔</h3>
+          <h3>피트니스 스테이션 스토리 ✔</h3>
+          <h3>고객지원 서비스 ✔</h3>
+        </div>
+      </div>
+      <div class="footer_footer">
+        <p>Email : rudgks0102@naver.com</p>
+        <p>Github : github.com/kyung-han-ko/signup.git</p>
+        <p>Phone : 010-2094-7078</p>
+      </div>
+      <div class="popular_ment">
+        <p>
+          The doctor of the future will give no medicine, but will educate his
+          patients in the care of the
+        </p>
+        <p>human frame in diet and in the cause and prevention of disease.</p>
+        <br />
+        <p>"미래의 의사는 환자에게 약을 주기보다, 환자가 자신의 체질과</p>
+        <p class="ment">음식, 질병의 원인과 예방에 관심을 갖도록 할 것이다"</p>
+      </div>
+    </footer>
+  </body>
+</html>

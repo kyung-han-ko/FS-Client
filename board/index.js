@@ -538,7 +538,7 @@ document.addEventListener("click", function (event) {
             .then((res) => res.json())
             .then((res) => {
               if (res.success) {
-                window.location.href = `./boardView.html?boardid=${boardid}`;
+                window.location.href = `./detail.html?boardid=${boardid}`;
               } else {
                 console.log("게시글 가져오기 실패");
               }

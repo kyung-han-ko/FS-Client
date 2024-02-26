@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script defer src="board.js"></script>
+    <script defer src="./index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-    <link rel="stylesheet" href="board.css" />
+    <link rel="stylesheet" href="./index.css" />
   </head>
   <header id="common_header">
     <div class="logo">
-      <a href="main.html"><img src="DFDFDFDFHH.png" id="logo" alt="로고" /></a>
+      <a href="../main/index.html"
+        ><img src="../photo/DFDFDFDFHH.png" id="logo" alt="로고"
+      /></a>
     </div>
     <div id="menu_wrap">
       <div class="header_menu"><a href="#">Self Check</a></div>
       <div class="header_menu"><a href="#">Food Styling</a></div>
-      <div class="header_menu"><a href="board.html">Common Board</a></div>
+      <div class="header_menu"><a href="#">Common Board</a></div>
+      <div class="header_menu"><a href="../map/index.html">Salad Map</a></div>
     </div>
     <div id="right_menu_wrap">
       <div id="log_in_button">
-        <a href="login.html"><span>Login / Join 🔒</span></a>
+        <a href="../login/index.html"><span>Login / Join 🔒</span></a>
       </div>
       <div id="getnickname"><a href="/"></a></div>
       <div id="calendarstring"></div>
@@ -38,13 +41,19 @@
         </p>
       </div>
       <div id="container3">
-        <a href="calendar.html"
+        <a href="../calendar/index.html"
           ><button id="goCalendar">캘린더 확인하기</button></a
         >
-        <a href="write.html"><button id="writeButton">글 작성하기</button></a>
+        <a href="../write/index.html"
+          ><button id="writeButton">글 작성하기</button></a
+        >
       </div>
       <div>
-        <input type="text" id="search" placeholder="  검색어를 입력하세요" />
+        <input
+          type="text"
+          id="search"
+          placeholder=" 검색어를 입력하세요 ( 작성자 or 제목 기준 )"
+        />
         <button id="searchButton">검색</button>
       </div>
       <br />

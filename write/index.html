@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script defer src="/write/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <link rel="stylesheet" href="/write/index.css" />
+  </head>
+  <header id="common_header">
+    <div class="logo">
+      <a href="../main/index.html"
+        ><img src="../photo/DFDFDFDFHH.png" id="logo" alt="로고"
+      /></a>
+    </div>
+    <div id="menu_wrap">
+      <div class="header_menu"><a href="#">Self Check</a></div>
+      <div class="header_menu"><a href="#">Food Styling</a></div>
+      <div class="header_menu">
+        <a href="../board/index.html">Common Board</a>
+      </div>
+      <div class="header_menu"><a href="../map/index.html">Salad Map</a></div>
+    </div>
+    <div id="right_menu_wrap">
+      <div id="log_in_button">
+        <a href="../login/index.html"><span>Login / Join 🔒</span></a>
+      </div>
+      <div id="getnickname"><a href="/"></a></div>
+      <div id="calendarstring"></div>
+      <!-- <div id="mypage_button"><a href="mypage.html"><span>MyPage 🔑</span></a></div> -->
+      <div id="logout_button">
+        <a><span>logout 🔑</span></a>
+      </div>
+    </div>
+  </header>
+  <body>
+    <div id="container">
+      <h1>게시판 글 작성하기</h1>
+      <p>1. 상대방을 비방하는 글을 작성할 시 강제 추방</p>
+      <p>2. 게시판 카테고리와 맞지 않는 글은 작성하지 말아주세요</p>
+      <p>Fitness Station을 이용해주셔서 항상 감사드립니다</p>
+      <br /><br />
+      <div id="title1">
+        🧑🏻 글 제목을 입력하세요 Please enter the title of the article
+      </div>
+      <br />
+      <input type="text" id="title2" placeholder="글의 제목을 입력해주세요" />
+      <br /><br /><br />
+      <div id="title3">
+        👦🏻 글 본문을 입력하세요 Please enter the body of the article
+      </div>
+      <br />
+      <textarea
+        name="content"
+        id="content"
+        cols="30"
+        rows="10"
+        placeholder="글 본문을 작성해주세요"
+      ></textarea>
+      <a href="../board/index.html"
+        ><input type="button" value="게시판 리스트" id="goback"
+      /></a>
+      <input type="button" value="등록하기" id="submit" />
+    </div>
+  </body>
+</html>
