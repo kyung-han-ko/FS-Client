@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 그리고 쿼리 파람스.get은 boardid에 해당하는 값을 가져오겠다는 뜻임
 
   function fetchData() {
-    fetch(`http://localhost:8080/getBoardText?boardid=${boardId}`, {
+    fetch(`http://localhost:8080/board/getBoardText?boardid=${boardId}`, {
       method: "get",
       headers: {
         "Content-Type": "application/json",
@@ -177,7 +177,7 @@ deleteButton.addEventListener("click", function () {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:8080/deleteBoard?boardid=${boardId}`, {
+        fetch(`http://localhost:8080/board/deleteBoard?boardid=${boardId}`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",
@@ -219,7 +219,7 @@ modifyButton.addEventListener("click", function () {
   const queryParams = new URLSearchParams(window.location.search);
   const boardId = queryParams.get("boardid");
 
-  fetch(`http://localhost:8080/modifyBoard?boardid=${boardId}`, {
+  fetch(`http://localhost:8080/board/modifyBoard?boardid=${boardId}`, {
     method: "get",
     headers: {
       "Content-Type": "application/json",
@@ -250,7 +250,7 @@ modifyButton.addEventListener("click", function () {
         container.style.display = "block";
 
         if (boardId) {
-          fetch(`http://localhost:8080/modifyBoard?boardid=${boardId}`, {
+          fetch(`http://localhost:8080/board/modifyBoard?boardid=${boardId}`, {
             method: "get",
             headers: {
               "Content-Type": "application/json",
@@ -301,7 +301,7 @@ updateButton.addEventListener("click", function () {
   const textInput = document.getElementById("text");
 
   // 서버에 수정 내용을 전송
-  fetch(`http://localhost:8080/updateBoard?boardid=${boardId}`, {
+  fetch(`http://localhost:8080/board/updateBoard?boardid=${boardId}`, {
     method: "post",
     body: JSON.stringify({
       title: titleInput.value,
@@ -355,7 +355,7 @@ saveReplyButton.addEventListener("click", function () {
   const queryParams = new URLSearchParams(window.location.search);
   const boardId = queryParams.get("boardid");
 
-  fetch(`http://localhost:8080/insertReply?boardid=${boardId}`, {
+  fetch(`http://localhost:8080/board/insertReply?boardid=${boardId}`, {
     method: "post",
     body: JSON.stringify({
       UserId: localStorage.getItem("UserId"),
@@ -392,7 +392,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const boardId = queryParams.get("boardid");
   const userId = localStorage.getItem("UserId");
 
-  fetch(`http://localhost:8080/getUserReply?boardid=${boardId}`, {
+  fetch(`http://localhost:8080/board/getUserReply?boardid=${boardId}`, {
     method: "get",
     headers: {
       "Content-Type": "application/json",
@@ -444,7 +444,7 @@ document.addEventListener("DOMContentLoaded", function () {
               .then((result) => {
                 if (result.isConfirmed) {
                   fetch(
-                    `http://localhost:8080/deleteUserReply?replyid=${reply.replyid}`,
+                    `http://localhost:8080/board/deleteUserReply?replyid=${reply.replyid}`,
                     {
                       method: "post",
                       headers: {
@@ -482,7 +482,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           editButton.addEventListener("click", function () {
             fetch(
-              `http://localhost:8080/getUserModifyReply?replyid=${reply.replyid}`,
+              `http://localhost:8080/board/getUserModifyReply?replyid=${reply.replyid}`,
               {
                 method: "get",
                 headers: {
@@ -543,7 +543,7 @@ document.addEventListener("DOMContentLoaded", function () {
               .then((result) => {
                 if (result.isConfirmed) {
                   fetch(
-                    `http://localhost:8080/modifyUserReply?replyid=${reply.replyid}`,
+                    `http://localhost:8080/board/modifyUserReply?replyid=${reply.replyid}`,
                     {
                       method: "post",
                       headers: {

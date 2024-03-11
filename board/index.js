@@ -63,14 +63,17 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchLookData();
   });
   function fetchLookData(currentLook = 1) {
-    fetch(`http://localhost:8080/lookAllPosts?currentLook=${currentLook}`, {
-      method: "get",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      credentials: "include",
-      mode: "cors",
-    })
+    fetch(
+      `http://localhost:8080/board/lookAllPosts?currentLook=${currentLook}`,
+      {
+        method: "get",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        mode: "cors",
+      }
+    )
       .then(function (res) {
         return res.json();
       })
@@ -213,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function searchPosts(keyword, currentPage = 1) {
     fetch(
-      `http://localhost:8080/searchPosts?currentPage=${currentPage}&keyword=${keyword}`,
+      `http://localhost:8080/board/searchPosts?currentPage=${currentPage}&keyword=${keyword}`,
       {
         method: "get",
         headers: {
@@ -347,7 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const pageGroupSize = 10; // 번호도 10개씩 만들어봄;
   function fetchData(data) {
     currentData = data;
-    fetch(`http://localhost:8080/getAllPost`, {
+    fetch(`http://localhost:8080/board/getAllPost`, {
       method: "get",
       headers: {
         "Content-Type": "application/json",
@@ -376,7 +379,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   function fetchPageData(currentData) {
     fetch(
-      `http://localhost:8080/getBoardData?currentData=${currentData}&pageSize=${pageSize}`,
+      `http://localhost:8080/board/getBoardData?currentData=${currentData}&pageSize=${pageSize}`,
       {
         method: "get",
         headers: {
@@ -530,11 +533,11 @@ document.addEventListener("click", function (event) {
   if (clickDiv) {
     const boardid = clickDiv.id;
 
-    fetch(`http://localhost:8080/getBoardText?boardid=${boardid}`)
+    fetch(`http://localhost:8080/board/getBoardText?boardid=${boardid}`)
       .then((res) => res.json())
       .then((res) => {
         if (res.success) {
-          fetch(`http://localhost:8080/increaseLook?boardid=${boardid}`)
+          fetch(`http://localhost:8080/board/increaseLook?boardid=${boardid}`)
             .then((res) => res.json())
             .then((res) => {
               if (res.success) {

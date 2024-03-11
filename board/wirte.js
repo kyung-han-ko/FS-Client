@@ -53,7 +53,7 @@ document.getElementById("logout_button").addEventListener("click", function () {
 // 글 작성하면 서버로 보낸다
 
 document.getElementById("submit").addEventListener("click", function () {
-  fetch("http://localhost:8080/boardSubmit", {
+  fetch("http://localhost:8080/board/boardSubmit", {
     method: "post",
     body: JSON.stringify({
       UserId: localStorage.getItem("UserId"),

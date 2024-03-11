@@ -110,7 +110,7 @@ function checkSubmit(res) {
 
 //이메일 전송버튼에 대한 js코드
 document.getElementById("emailplease").addEventListener("click", function () {
-  fetch("http://localhost:8080/post", {
+  fetch("http://localhost:8080/user/post", {
     method: "post",
     body: JSON.stringify({
       email: document.getElementById("email").value,
