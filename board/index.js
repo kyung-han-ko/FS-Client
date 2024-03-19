@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   function fetchLookData(currentLook = 1) {
     fetch(
-      `http://localhost:8080/board/lookAllPosts?currentLook=${currentLook}`,
+      `http://localhost:8080/api/board/lookAllPosts?currentLook=${currentLook}`,
       {
         method: "get",
         headers: {
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function searchPosts(keyword, currentPage = 1) {
     fetch(
-      `http://localhost:8080/board/searchPosts?currentPage=${currentPage}&keyword=${keyword}`,
+      `http://localhost:8080/api/board/searchPosts?currentPage=${currentPage}&keyword=${keyword}`,
       {
         method: "get",
         headers: {
@@ -350,7 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const pageGroupSize = 10; // 번호도 10개씩 만들어봄;
   function fetchData(data) {
     currentData = data;
-    fetch(`http://localhost:8080/board/getAllPost`, {
+    fetch(`http://localhost:8080/api/board/getAllPost`, {
       method: "get",
       headers: {
         "Content-Type": "application/json",
@@ -379,7 +379,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   function fetchPageData(currentData) {
     fetch(
-      `http://localhost:8080/board/getBoardData?currentData=${currentData}&pageSize=${pageSize}`,
+      `http://localhost:8080/api/board/getBoardData?currentData=${currentData}&pageSize=${pageSize}`,
       {
         method: "get",
         headers: {
@@ -533,7 +533,7 @@ document.addEventListener("click", function (event) {
   if (clickDiv) {
     const boardid = clickDiv.id;
 
-    fetch(`http://localhost:8080/board/getBoardText?boardid=${boardid}`)
+    fetch(`http://localhost:8080/api/board/getBoardText?boardid=${boardid}`)
       .then((res) => res.json())
       .then((res) => {
         if (res.success) {

@@ -1,5 +1,5 @@
 document.getElementById("log_in_button").addEventListener("click", function () {
-  fetch("http://localhost:8080/login", {
+  fetch("http://localhost:8080/api/login", {
     method: "post",
     body: JSON.stringify({
       email: document.getElementById("email").value,

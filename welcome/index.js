@@ -110,7 +110,7 @@ function checkSubmit(res) {
 
 //이메일 전송버튼에 대한 js코드
 document.getElementById("emailplease").addEventListener("click", function () {
-  fetch("http://localhost:8080/user/post", {
+  fetch("http://localhost:8080/api/user/post", {
     method: "post",
     body: JSON.stringify({
       email: document.getElementById("email").value,
@@ -143,7 +143,7 @@ document.getElementById("emailplease").addEventListener("click", function () {
 
 //최초 이메일을 클라이언트가 작성한 인증번호와 내가 보낸게 맞는지에 대한 js코드
 document.getElementById("emailCheckBtn").addEventListener("click", function () {
-  fetch("http://localhost:8080/emailCheck", {
+  fetch("http://localhost:8080/api/emailCheck", {
     method: "post",
     body: JSON.stringify({
       emailNumber: document.getElementById("emailNumber").value,
@@ -183,7 +183,7 @@ function checkSend(res) {
 }
 
 document.getElementById("check_name").addEventListener("click", function () {
-  fetch("http://localhost:8080/checkName", {
+  fetch("http://localhost:8080/api/checkName", {
     method: "post",
     body: JSON.stringify({
       name: document.getElementById("name").value,
