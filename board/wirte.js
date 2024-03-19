@@ -1,3 +1,4 @@
+import { API_URL } from "../const.js";
 const token = localStorage.getItem("UserToken");
 const loginButton = document.getElementById("log_in_button");
 const logout_button = document.getElementById("mypage_button");
@@ -53,7 +54,7 @@ document.getElementById("logout_button").addEventListener("click", function () {
 // 글 작성하면 서버로 보낸다
 
 document.getElementById("submit").addEventListener("click", function () {
-  fetch("http://localhost:8080/api/boardSubmit", {
+  fetch(`${API_URL}/api/boardSubmit`, {
     method: "post",
     body: JSON.stringify({
       UserId: localStorage.getItem("UserId"),

@@ -1,7 +1,10 @@
+import { API_URL } from "../const.js";
+
 var valid_txt = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
 //(알파벳,숫자)@(알파벳,숫자).(알파벳,숫자)
 
 // 비밀번호 유효성 검사에 대한 js코드
+// API_URL;
 
 const password1 = document.getElementById("password1");
 const password2 = document.getElementById("password2");
@@ -48,7 +51,7 @@ document.getElementById("signup_button").addEventListener("click", function () {
     swal("닉네임 오류", "닉네임은 10자 이하여야 합니다.", "warning");
   }
 
-  fetch("http://localhost:8080/signup", {
+  fetch(`${API_URL}/signup`, {
     method: "post",
     body: JSON.stringify({
       name: document.getElementById("name").value,
@@ -110,7 +113,7 @@ function checkSubmit(res) {
 
 //이메일 전송버튼에 대한 js코드
 document.getElementById("emailplease").addEventListener("click", function () {
-  fetch("http://localhost:8080/api/user/post", {
+  fetch(`${API_URL}/api/user/post`, {
     method: "post",
     body: JSON.stringify({
       email: document.getElementById("email").value,
@@ -143,7 +146,7 @@ document.getElementById("emailplease").addEventListener("click", function () {
 
 //최초 이메일을 클라이언트가 작성한 인증번호와 내가 보낸게 맞는지에 대한 js코드
 document.getElementById("emailCheckBtn").addEventListener("click", function () {
-  fetch("http://localhost:8080/api/emailCheck", {
+  fetch(`${API_URL}/api/emailCheck`, {
     method: "post",
     body: JSON.stringify({
       emailNumber: document.getElementById("emailNumber").value,
@@ -183,7 +186,7 @@ function checkSend(res) {
 }
 
 document.getElementById("check_name").addEventListener("click", function () {
-  fetch("http://localhost:8080/api/checkName", {
+  fetch(`${API_URL}/api/checkName`, {
     method: "post",
     body: JSON.stringify({
       name: document.getElementById("name").value,

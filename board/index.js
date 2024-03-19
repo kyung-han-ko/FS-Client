@@ -1,5 +1,6 @@
-//헤더 로직. 토큰과 아이디, 비번 받아와서 닉네임 띄워주고 로그아웃되면 모두 사라진다
+import { API_URL } from "../const.js";
 
+//헤더 로직. 토큰과 아이디, 비번 받아와서 닉네임 띄워주고 로그아웃되면 모두 사라진다
 const token = localStorage.getItem("UserToken");
 const loginButton = document.getElementById("log_in_button");
 const logout_button = document.getElementById("logout_button");
@@ -63,17 +64,14 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchLookData();
   });
   function fetchLookData(currentLook = 1) {
-    fetch(
-      `http://localhost:8080/api/board/lookAllPosts?currentLook=${currentLook}`,
-      {
-        method: "get",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
-        mode: "cors",
-      }
-    )
+    fetch(`${API_URL}/api/board/lookAllPosts?currentLook=${currentLook}`, {
+      method: "get",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      mode: "cors",
+    })
       .then(function (res) {
         return res.json();
       })
@@ -216,7 +214,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function searchPosts(keyword, currentPage = 1) {
     fetch(
-      `http://localhost:8080/api/board/searchPosts?currentPage=${currentPage}&keyword=${keyword}`,
+      `${API_URL}/api/board/searchPosts?currentPage=${currentPage}&keyword=${keyword}`,
       {
         method: "get",
         headers: {
@@ -350,7 +348,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const pageGroupSize = 10; // 번호도 10개씩 만들어봄;
   function fetchData(data) {
     currentData = data;
-    fetch(`http://localhost:8080/api/board/getAllPost`, {
+    fetch(`${API_URL}/api/board/getAllPost`, {
       method: "get",
       headers: {
         "Content-Type": "application/json",
@@ -379,7 +377,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   function fetchPageData(currentData) {
     fetch(
-      `http://localhost:8080/api/board/getBoardData?currentData=${currentData}&pageSize=${pageSize}`,
+      `${API_URL}/api/board/getBoardData?currentData=${currentData}&pageSize=${pageSize}`,
       {
         method: "get",
         headers: {
@@ -533,11 +531,11 @@ document.addEventListener("click", function (event) {
   if (clickDiv) {
     const boardid = clickDiv.id;
 
-    fetch(`http://localhost:8080/api/board/getBoardText?boardid=${boardid}`)
+    fetch(`${API_URL}/api/board/getBoardText?boardid=${boardid}`)
       .then((res) => res.json())
       .then((res) => {
         if (res.success) {
-          fetch(`http://localhost:8080/board/increaseLook?boardid=${boardid}`)
+          fetch(`${API_URL}/board/increaseLook?boardid=${boardid}`)
             .then((res) => res.json())
             .then((res) => {
               if (res.success) {

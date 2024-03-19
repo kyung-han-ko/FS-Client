@@ -1,3 +1,5 @@
+import { API_URL } from "../const.js";
+
 //로그인 로그아웃 공통로직
 
 const token = localStorage.getItem("UserToken");
@@ -67,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 그리고 쿼리 파람스.get은 boardid에 해당하는 값을 가져오겠다는 뜻임
 
   function fetchData() {
-    fetch(`http://localhost:8080/api/board/getBoardText?boardid=${boardId}`, {
+    fetch(`${API_URL}/api/board/getBoardText?boardid=${boardId}`, {
       method: "get",
       headers: {
         "Content-Type": "application/json",
@@ -177,17 +179,14 @@ deleteButton.addEventListener("click", function () {
       reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(
-          `http://localhost:8080/api/board/deleteBoard?boardid=${boardId}`,
-          {
-            method: "post",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            credentials: "include",
-            mode: "cors",
-          }
-        )
+        fetch(`${API_URL}/api/board/deleteBoard?boardid=${boardId}`, {
+          method: "post",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          credentials: "include",
+          mode: "cors",
+        })
           .then(function (res) {
             return res.json();
           })
@@ -222,7 +221,7 @@ modifyButton.addEventListener("click", function () {
   const queryParams = new URLSearchParams(window.location.search);
   const boardId = queryParams.get("boardid");
 
-  fetch(`http://localhost:8080/api/board/modifyBoard?boardid=${boardId}`, {
+  fetch(`${API_URL}/api/board/modifyBoard?boardid=${boardId}`, {
     method: "get",
     headers: {
       "Content-Type": "application/json",
@@ -253,17 +252,14 @@ modifyButton.addEventListener("click", function () {
         container.style.display = "block";
 
         if (boardId) {
-          fetch(
-            `http://localhost:8080/api/board/modifyBoard?boardid=${boardId}`,
-            {
-              method: "get",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              credentials: "include",
-              mode: "cors",
-            }
-          )
+          fetch(`${API_URL}/api/board/modifyBoard?boardid=${boardId}`, {
+            method: "get",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+            mode: "cors",
+          })
             .then(function (res) {
               return res.json();
             })
@@ -307,7 +303,7 @@ updateButton.addEventListener("click", function () {
   const textInput = document.getElementById("text");
 
   // 서버에 수정 내용을 전송
-  fetch(`http://localhost:8080/api/board/updateBoard?boardid=${boardId}`, {
+  fetch(`${API_URL}/api/board/updateBoard?boardid=${boardId}`, {
     method: "post",
     body: JSON.stringify({
       title: titleInput.value,
@@ -361,7 +357,7 @@ saveReplyButton.addEventListener("click", function () {
   const queryParams = new URLSearchParams(window.location.search);
   const boardId = queryParams.get("boardid");
 
-  fetch(`http://localhost:8080/api/board/insertReply?boardid=${boardId}`, {
+  fetch(`${API_URL}/api/board/insertReply?boardid=${boardId}`, {
     method: "post",
     body: JSON.stringify({
       UserId: localStorage.getItem("UserId"),
@@ -398,7 +394,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const boardId = queryParams.get("boardid");
   const userId = localStorage.getItem("UserId");
 
-  fetch(`http://localhost:8080/api/board/getUserReply?boardid=${boardId}`, {
+  fetch(`${API_URL}/api/board/getUserReply?boardid=${boardId}`, {
     method: "get",
     headers: {
       "Content-Type": "application/json",
@@ -450,7 +446,7 @@ document.addEventListener("DOMContentLoaded", function () {
               .then((result) => {
                 if (result.isConfirmed) {
                   fetch(
-                    `http://localhost:8080/api/board/deleteUserReply?replyid=${reply.replyid}`,
+                    `${API_URL}/api/board/deleteUserReply?replyid=${reply.replyid}`,
                     {
                       method: "post",
                       headers: {
@@ -488,7 +484,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
           editButton.addEventListener("click", function () {
             fetch(
-              `http://localhost:8080/api/board/getUserModifyReply?replyid=${reply.replyid}`,
+              `${API_URL}/api/board/getUserModifyReply?replyid=${reply.replyid}`,
               {
                 method: "get",
                 headers: {
@@ -549,7 +545,7 @@ document.addEventListener("DOMContentLoaded", function () {
               .then((result) => {
                 if (result.isConfirmed) {
                   fetch(
-                    `http://localhost:8080/api/board/modifyUserReply?replyid=${reply.replyid}`,
+                    `${API_URL}/api/board/modifyUserReply?replyid=${reply.replyid}`,
                     {
                       method: "post",
                       headers: {

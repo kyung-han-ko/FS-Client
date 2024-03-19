@@ -1,3 +1,5 @@
+import { API_URL } from "../const.js";
+
 window.addEventListener("load", function () {
   const token = localStorage.getItem("UserToken");
   const nickname = localStorage.getItem("UserName");

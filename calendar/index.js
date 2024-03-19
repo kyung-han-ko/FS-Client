@@ -1,3 +1,5 @@
+import { API_URL } from "../const.js";
+
 const token = localStorage.getItem("UserToken");
 const loginButton = document.getElementById("log_in_button");
 const logout_button = document.getElementById("mypage_button");
@@ -72,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // 쿼리 매개를 정의하는 거니까 백틱으로 정의해줘야하고 템플릿 리터럴은 궁극적으로
   // 변수나 표현식을 문자열에 넣기 위함임..
   fetch(
-    `http://localhost:8080/api/calendar/getCalendarData?currentYM=${currentYM}&userId=${userId}`,
+    `${API_URL}/api/calendar/getCalendarData?currentYM=${currentYM}&userId=${userId}`,
     {
       method: "get",
       headers: {
@@ -142,7 +144,7 @@ closeModal.addEventListener("click", function () {
 // 모달 저장 후 로직
 document.getElementById("submit").addEventListener("click", function () {
   function calendarFetch() {
-    fetch("http://localhost:8080/api/calendar/loadCalendar", {
+    fetch(`${API_URL}/api/calendar/loadCalendar`, {
       method: "post",
       body: JSON.stringify({
         userId: localStorage.getItem("UserId"),
@@ -252,7 +254,7 @@ document.getElementById("delete-plan").addEventListener("click", function () {
 });
 
 function deletePlanFetch(eventId) {
-  fetch("http://localhost:8080/api/calendar/deleteCalendarData", {
+  fetch(`${API_URL}/api/calendar/deleteCalendarData`, {
     method: "post",
     body: JSON.stringify({ eventId }), // eventId 로 전송하고 sql 컬럼도 변경한 상황임
     headers: {

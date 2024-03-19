@@ -1,5 +1,7 @@
+import { API_URL } from "../const.js";
+
 document.getElementById("log_in_button").addEventListener("click", function () {
-  fetch("http://localhost:8080/api/login", {
+  fetch(`${API_URL}/api/login`, {
     method: "post",
     body: JSON.stringify({
       email: document.getElementById("email").value,
@@ -29,7 +31,7 @@ document.getElementById("log_in_button").addEventListener("click", function () {
           localStorage.setItem("UserName", res.userName);
           console.log(res.userId);
           console.log(res.token);
-          window.location.href = "/main/index.html";
+          window.location.href = "/index.html";
         });
       } else if (res.result) {
         swal("로그인 실패", "아이디를 정확하게 입력해주세요", "info");
