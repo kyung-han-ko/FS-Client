@@ -197,7 +197,7 @@ deleteButton.addEventListener("click", function () {
                 "게시판이 성공적으로 삭제되었습니다.",
                 "success"
               ).then(() => {
-                window.location.href = "board/index.html";
+                window.location.href = "/board/index.html";
               });
             } else {
               Swal.fire(
@@ -345,7 +345,7 @@ const boardId = queryParams.get("boardid");
 cancelButton.addEventListener("click", function () {
   Swal.fire("Update Cancel", "게시물 수정을 취소하셨습니다", "info").then(
     () => {
-      window.location.href = `./boardView.html?boardid=${boardId}`;
+      window.location.href = `/board/detail.html?boardid=${boardId}`;
     }
   );
 });
@@ -516,7 +516,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                   const cancelReply = document.getElementById("cancelReply");
                   cancelReply.addEventListener("click", function () {
-                    window.location.href = `./boardView.html?boardid=${boardId}`;
+                    window.location.href = `/board/detail.html?boardid=${boardId}`;
                   });
                 }
               })

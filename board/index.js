@@ -535,7 +535,7 @@ document.addEventListener("click", function (event) {
       .then((res) => res.json())
       .then((res) => {
         if (res.success) {
-          fetch(`${API_URL}/board/increaseLook?boardid=${boardid}`)
+          fetch(`${API_URL}/api/board/increaseLook?boardid=${boardid}`)
             .then((res) => res.json())
             .then((res) => {
               if (res.success) {

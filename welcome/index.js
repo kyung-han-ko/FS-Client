@@ -51,7 +51,7 @@ document.getElementById("signup_button").addEventListener("click", function () {
     swal("닉네임 오류", "닉네임은 10자 이하여야 합니다.", "warning");
   }
 
-  fetch(`${API_URL}/signup`, {
+  fetch(`${API_URL}/api/signup`, {
     method: "post",
     body: JSON.stringify({
       name: document.getElementById("name").value,
