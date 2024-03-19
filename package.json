@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "express-session": "^1.17.3",
-    "nodemailer": "^6.9.7",
-    "sweetalert2": "^11.10.2"
-  }
-}
