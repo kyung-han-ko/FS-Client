@@ -108,11 +108,10 @@ function displayMarker(place) {
   });
 }
 
-function goToDetail(placeName) {
+window.goToDetail = function (placeName) {
   const searchUrl = `https://map.kakao.com/?q=${placeName}`;
-
   window.open(searchUrl);
-}
+};
 
 // 가게의 상세페이지로 이동하는 함수
 

@@ -7,12 +7,14 @@ const logout_button = document.getElementById("logout_button");
 const nickname = localStorage.getItem("UserName");
 const getnickname = document.getElementById("getnickname");
 const calendarstring = document.getElementById("calendarstring");
+const writeButton = document.getElementById("writeButton");
 
 if (!token) {
   // window.location.href = "./login.html";
   calendarstring.style.display = "none";
   getnickname.style.display = "none";
   logout_button.style.display = "none";
+  writeButton.style.display = "none";
 } else {
   loginButton.style.display = "none";
   getnickname.textContent = nickname;
